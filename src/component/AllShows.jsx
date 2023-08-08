@@ -40,7 +40,7 @@ const AllShows = () => {
                     <h2 className="title">{item.show?.name}</h2>
                     <div className="network">{item.show.network?.name}</div>
                     <br />
-                    <Button buttonName="View Summery"  link ={`/${item.show?.id}`}/>
+                    <Button buttonName="View Summary"  link ={`/${item.show?.id}`}/>
                   </footer>
                 </div>
               );

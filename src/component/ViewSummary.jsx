@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "./Button";
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import Modal from "@mui/material/Modal";
@@ -25,7 +24,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const ViewSummery = () => {
+const ViewSummary = () => {
   const [alertOpen, setAlertOpen] = React.useState(false);
 
 
@@ -50,7 +49,7 @@ const ViewSummery = () => {
   };
 
 
-  const [summery, setSummery] = useState();
+  const [summary, setSummary] = useState();
   let { id } = useParams();
   useEffect(() => {
     let url = `https://api.tvmaze.com/shows/${id}`;
@@ -59,25 +58,25 @@ const ViewSummery = () => {
         res
           .json()
           .then((result) => {
-            setSummery(result);
+            setSummary(result);
             console.log(result);
           })
           .catch((e) => console.log(e))
       )
       .catch((e) => console.log(e));
-    console.log("summery", summery);
+    console.log("summary", summary);
   }, []);
   return (
     <>
       <div className="" style={{ display: "flex" }}>
         <div className="" style={{ display: "inline" }}>
-          <img src={summery?.image?.original} alt="" height="500px" />
+          <img src={summary?.image?.original} alt="" height="500px" />
         </div>
         <div className="" style={{ display: "inline", margin: "5% 5% 5% 10%" }}>
-          <h1>{summery?.name}</h1>
+          <h1>{summary?.name}</h1>
           <br />
           <p style={{ fontSize: "16px", fontWeight: "500" }}>
-            {summery?.summary.replace(/<\/?[^>]+>/gi, "")}
+            {summary?.summary.replace(/<\/?[^>]+>/gi, "")}
           </p>
           <div style={{ textAlign: "center", marginTop: "20%" }}>
             <button onClick={handleOpen} style={{ border: "none" }}>
@@ -97,7 +96,7 @@ const ViewSummery = () => {
           <TextField
             id="outlined-disabled"
             label="Movie Name"
-            defaultValue={summery?.name}
+            defaultValue={summary?.name}
             sx={{ margin: "20px 80px" }}
           />
           <div className="">
@@ -151,4 +150,4 @@ const ViewSummery = () => {
   );
 };
 
-export default ViewSummery;
+export default ViewSummary;
