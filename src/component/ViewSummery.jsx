@@ -29,9 +29,7 @@ const ViewSummery = () => {
   const [alertOpen, setAlertOpen] = React.useState(false);
 
 
-  const handleClick = () => {
-    setAlertOpen(true);
-  };
+  
 
   const handleAlertClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -42,9 +40,15 @@ const ViewSummery = () => {
   };
 
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleClick = () => {
+    setAlertOpen(true);
+    setOpen(false);
+  };
+
 
   const [summery, setSummery] = useState();
   let { id } = useParams();
@@ -140,7 +144,7 @@ const ViewSummery = () => {
       </Modal>
       <Snackbar open={alertOpen} autoHideDuration={6000} onClose={handleAlertClose}>
         <Alert onClose={handleAlertClose} severity="success" sx={{ width: '100%' }}>
-          This is a success message!
+        Thank You For Purchasing Ticket
         </Alert>
       </Snackbar>
     </>
